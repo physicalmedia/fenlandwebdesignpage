@@ -14,17 +14,18 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #222;
+            background: #fafafa;
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
             color: white;
-            padding: 1rem 0;
+            padding: 1.2rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         nav {
@@ -37,61 +38,109 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         nav a {
-            color: white;
+            color: #e0e0e0;
             text-decoration: none;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
         }
 
         nav a:hover {
-            opacity: 0.8;
+            color: #00d4ff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #00d4ff 100%);
             color: white;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
+            font-weight: 900;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
+            z-index: 2;
+            color: #e8e8e8;
+            line-height: 1.8;
         }
 
         .cta-button {
             display: inline-block;
-            background: #fff;
-            color: #667eea;
-            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #0f0f0f;
+            padding: 1.1rem 2.8rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+            border: 2px solid transparent;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
         }
 
         .container {
@@ -101,14 +150,28 @@
         }
 
         section {
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #0f0f0f;
+            font-weight: 900;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            margin: 1rem auto 0;
+            border-radius: 2px;
         }
 
         .section-subtitle {
@@ -116,60 +179,98 @@
             font-size: 1.1rem;
             color: #666;
             margin-bottom: 3rem;
+            margin-top: 2rem;
         }
 
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .feature-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-left: 4px solid #667eea;
+            transition: all 0.4s ease;
+            border: 2px solid #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
+            border-color: #00d4ff;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
         }
 
         .feature-card h3 {
             margin-bottom: 1rem;
-            color: #667eea;
+            color: #0f0f0f;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #555;
+            line-height: 1.7;
         }
 
         .services {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
         }
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
 
         .service-item {
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 2.8rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border-left: 5px solid #00d4ff;
+            position: relative;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
+            border-left: 5px solid #0099cc;
         }
 
         .service-item h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            color: #0f0f0f;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 800;
         }
 
         .service-item ul {
@@ -178,60 +279,89 @@
         }
 
         .service-item li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+            padding: 0.7rem 0;
+            padding-left: 1.8rem;
             position: relative;
+            color: #555;
+            font-weight: 500;
         }
 
         .service-item li:before {
-            content: "✓";
+            content: "▸";
             position: absolute;
             left: 0;
-            color: #667eea;
+            color: #00d4ff;
             font-weight: bold;
+            font-size: 1.2rem;
         }
 
         .cta-section {
             text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #00d4ff 100%);
             color: white;
-            border-radius: 10px;
+            border-radius: 20px;
             margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .cta-section h2 {
-            font-size: 2rem;
+            font-size: 2.3rem;
             margin-bottom: 1rem;
+            font-weight: 900;
+            position: relative;
+            z-index: 2;
         }
 
         .cta-section p {
             font-size: 1.1rem;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            color: #e8e8e8;
         }
 
         .cta-button-white {
             display: inline-block;
             background: white;
-            color: #667eea;
-            padding: 1rem 2.5rem;
+            color: #0f0f0f;
+            padding: 1.1rem 2.8rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .cta-button-white:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: #00d4ff;
+            color: #0f0f0f;
         }
 
         footer {
-            background: #333;
+            background: #0f0f0f;
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            border-top: 2px solid #00d4ff;
         }
 
         .footer-content {
@@ -243,35 +373,53 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
         }
 
         .footer-links a {
-            color: #bbb;
+            color: #999;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .footer-links a:hover {
-            color: white;
+            color: #00d4ff;
+        }
+
+        footer p {
+            color: #666;
+            margin: 0.5rem 0;
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding: 5rem 2rem;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             nav ul {
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .features, .service-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 3rem 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -280,7 +428,7 @@
     <!-- Navigation -->
     <header>
         <nav>
-            <div class="logo">Fenland Web Design</div>
+            <div class="logo">✦ Fenland Web Design</div>
             <ul>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
@@ -292,34 +440,34 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1>Transform Your Local Business Online</h1>
-        <p>Modernize your business with professional web design. Increase revenue, attract more customers, and establish your digital presence in Fenland.</p>
-        <a href="#contact" class="cta-button">Get Started Today</a>
+        <p>Modern, professional web design that gets results. Build your digital presence in Fenland with a website designed to attract customers and drive real growth.</p>
+        <a href="#contact" class="cta-button">Start Your Journey</a>
     </section>
 
     <!-- About Section -->
     <section class="container" id="about">
-        <h2 class="section-title">Why Choose Us</h2>
-        <p class="section-subtitle">Quality web design built for local businesses</p>
+        <h2 class="section-title">Why We're Different</h2>
+        <p class="section-subtitle">Premium web design for ambitious local businesses</p>
         <div class="features">
             <div class="feature-card">
                 <div class="feature-icon">💼</div>
                 <h3>Local Expertise</h3>
-                <p>We understand the unique needs of Fenland businesses and build websites tailored to your local community.</p>
+                <p>We know Fenland. We understand your market, your customers, and what it takes to stand out locally.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📱</div>
-                <h3>Mobile Ready</h3>
-                <p>Every website we create is fully responsive and optimized for mobile devices—where your customers are.</p>
+                <h3>Mobile First Design</h3>
+                <p>Every site is built for mobile devices first. Your customers are on their phones—we make sure they see you perfectly.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🔍</div>
-                <h3>SEO Optimized</h3>
-                <p>Rank higher on Google and get found by customers searching for your services locally.</p>
+                <h3>SEO Mastery</h3>
+                <p>Rank higher on Google. We optimize every aspect so customers searching for you actually find you.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
-                <h3>Fast & Modern</h3>
-                <p>Clean, modern design with fast loading speeds to keep your visitors engaged.</p>
+                <h3>Lightning Fast Performance</h3>
+                <p>Blazing-fast loading speeds. We know slower sites lose customers. Yours won't be one of them.</p>
             </div>
         </div>
     </section>
@@ -327,37 +475,37 @@
     <!-- Services -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Complete web solutions for modern businesses</p>
+            <h2 class="section-title">What We Deliver</h2>
+            <p class="section-subtitle">Powerful web solutions built for your success</p>
             <div class="service-grid">
                 <div class="service-item">
-                    <h3>🌐 Website Design & Development</h3>
+                    <h3>🌐 Custom Website Design</h3>
                     <ul>
-                        <li>Custom professional websites</li>
-                        <li>Responsive mobile design</li>
-                        <li>Fast loading speeds</li>
-                        <li>User-friendly interface</li>
-                        <li>Modern, clean aesthetics</li>
+                        <li>Stunning custom designs</li>
+                        <li>Fully responsive layouts</li>
+                        <li>Professional branding</li>
+                        <li>Intuitive user experience</li>
+                        <li>Fast load times</li>
                     </ul>
                 </div>
                 <div class="service-item">
-                    <h3>💰 E-Commerce Solutions</h3>
+                    <h3>💳 Payment Integration</h3>
                     <ul>
-                        <li>Online store setup</li>
-                        <li>Payment processing</li>
-                        <li>Inventory management</li>
-                        <li>Shopping cart optimization</li>
-                        <li>Secure transactions</li>
+                        <li>Secure payment processing</li>
+                        <li>Multi-payment options</li>
+                        <li>Enterprise-grade security</li>
+                        <li>Seamless transactions</li>
+                        <li>Trusted by big companies</li>
                     </ul>
                 </div>
                 <div class="service-item">
-                    <h3>📊 Digital Marketing</h3>
+                    <h3>📊 Digital Growth</h3>
                     <ul>
                         <li>SEO optimization</li>
-                        <li>Local business listings</li>
+                        <li>Local business visibility</li>
+                        <li>Performance tracking</li>
                         <li>Content strategy</li>
-                        <li>Social media integration</li>
-                        <li>Analytics & reporting</li>
+                        <li>Analytics & insights</li>
                     </ul>
                 </div>
             </div>
@@ -367,9 +515,9 @@
     <!-- CTA Section -->
     <section class="container">
         <div class="cta-section" id="contact">
-            <h2>Ready to Get Started?</h2>
-            <p>Let's create a stunning online presence for your business.</p>
-            <a href="mailto:fenlandwebdesigns@gmail.com" class="cta-button-white">Contact Us Today</a>
+            <h2>Ready to Elevate Your Online Presence?</h2>
+            <p>Let's create something remarkable together. A website that isn't just beautiful—it converts.</p>
+            <a href="mailto:fenlandwebdesigns@gmail.com" class="cta-button-white">Get Started Today</a>
         </div>
     </section>
 
@@ -383,7 +531,7 @@
                 <a href="#">Privacy Policy</a>
             </div>
             <p>&copy; 2026 Fenland Web Design. All rights reserved.</p>
-            <p>Modernizing Local Businesses | Fenland, UK</p>
+            <p>Premium Web Design & Digital Solutions | Fenland, UK</p>
         </div>
     </footer>
 </body>
