@@ -64,20 +64,31 @@
 
         /* Floating Particles */
         .particle {
-            position: absolute;
+            position: fixed;
             width: 2px;
             height: 2px;
             background: rgba(0, 255, 150, 0.6);
             border-radius: 50%;
-            animation: float 20s infinite;
+            animation: float 20s infinite linear;
             box-shadow: 0 0 10px rgba(0, 255, 150, 0.8);
+            pointer-events: none;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-1000px) translateX(200px); opacity: 0; }
+            0% { 
+                transform: translateY(0) translateX(0); 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 1; 
+            }
+            90% { 
+                opacity: 1; 
+            }
+            100% { 
+                transform: translateY(-1000px) translateX(200px); 
+                opacity: 0; 
+            }
         }
 
         /* Header */
@@ -87,8 +98,9 @@
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 255, 150, 0.2);
             padding: 1.5rem 0;
-            position: sticky;
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 100;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
@@ -168,7 +180,9 @@
             justify-content: center;
             position: relative;
             padding: 3rem 2rem;
+            padding-top: 8rem;
             overflow: hidden;
+            will-change: transform;
         }
 
         .hero::before {
@@ -181,6 +195,7 @@
             background: radial-gradient(circle, rgba(0, 255, 150, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             animation: pulse 8s ease-in-out infinite;
+            will-change: transform;
         }
 
         @keyframes pulse {
@@ -198,6 +213,7 @@
             background: radial-gradient(circle, rgba(0, 113, 227, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             animation: pulse 10s ease-in-out infinite reverse;
+            will-change: transform;
         }
 
         .hero-content {
@@ -353,7 +369,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            transform-style: preserve-3d;
+            transform: translateZ(0);
             will-change: transform;
         }
 
@@ -377,7 +393,7 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-15px) translateZ(0);
+            transform: translateY(-15px);
             border-color: rgba(0, 255, 150, 0.5);
             background: rgba(0, 255, 150, 0.08);
             box-shadow: 0 20px 60px rgba(0, 255, 150, 0.15);
@@ -429,6 +445,8 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .service-item::after {
@@ -502,6 +520,8 @@
             margin: 4rem 0;
             position: relative;
             overflow: hidden;
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .cta-section::before {
@@ -514,6 +534,7 @@
             background: radial-gradient(circle, rgba(0, 255, 150, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             animation: pulse 10s ease-in-out infinite;
+            will-change: transform;
         }
 
         .cta-section h2 {
@@ -601,8 +622,17 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            header {
+                padding: 1rem 0;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+
             .hero {
                 min-height: 80vh;
+                padding-top: 6rem;
             }
 
             .hero h1 {
@@ -615,6 +645,7 @@
 
             nav ul {
                 gap: 1.5rem;
+                font-size: 0.85rem;
             }
 
             .section-title {
@@ -631,6 +662,10 @@
 
             .cta-section h2 {
                 font-size: 2rem;
+            }
+
+            .logo-text {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -762,16 +797,18 @@
     </footer>
 
     <script>
-        // Parallax Effect
+        // Smooth Parallax Effect on All Elements
+        const parallaxElements = document.querySelectorAll('section, .feature-card, .service-item, .cta-section');
+        
         window.addEventListener('scroll', () => {
-            const cards = document.querySelectorAll('.feature-card');
-            cards.forEach((card, index) => {
-                const scrollPosition = window.scrollY;
-                const elementOffset = card.offsetTop;
-                const distance = scrollPosition - elementOffset;
-                card.style.transform = `translateY(${distance * 0.5}px)`;
+            const scrollPos = window.scrollY;
+            
+            parallaxElements.forEach((element, index) => {
+                const elementOffset = element.getBoundingClientRect().top;
+                const distance = (scrollPos + window.innerHeight - elementOffset) * 0.3;
+                element.style.transform = `translateY(${distance * 0.1}px)`;
             });
-        });
+        }, { passive: true });
 
         // Generate Code Lines
         const codeSnippets = [
@@ -787,6 +824,9 @@
             '@media (beautiful) { display: block; }',
             'function* animate() { yield smooth(); }',
             '.button { transition: all 0.3s; }',
+            'transform: perspective(1000px);',
+            'const immersive = true;',
+            'backdrop-filter: blur(20px);',
         ];
 
         const codeContainer = document.getElementById('codeContainer');
@@ -821,10 +861,12 @@
             setTimeout(() => particle.remove(), 25000);
         }
 
-        // Create particles continuously
+        // Create initial particles
         for (let i = 0; i < 5; i++) {
             createParticle();
         }
+        
+        // Create particles continuously
         setInterval(createParticle, 2000);
     </script>
 </body>
