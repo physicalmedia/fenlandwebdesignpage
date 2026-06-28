@@ -7,7 +7,7 @@
   <meta name="description" content="Premium web design for businesses in Spalding and across the UK. Simple, fast, and built to convert." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -16,7 +16,6 @@
     }
 
     :root {
-      --dark: #1a1a1a;
       --navy: #1e3a5f;
       --blue: #4a90e2;
       --light-blue: #6ba3f5;
@@ -29,7 +28,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--cream);
       color: var(--text);
       line-height: 1.6;
@@ -64,10 +63,10 @@
       align-items: center;
       gap: 0.5rem;
       text-decoration: none;
-      font-weight: 900;
+      font-weight: 700;
       font-size: 1.1rem;
       color: var(--navy);
-      font-family: 'Space Mono', monospace;
+      font-family: 'Playfair Display', serif;
       letter-spacing: -0.02em;
     }
 
@@ -183,14 +182,14 @@
     }
 
     .hero h1 {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(2.5rem, 8vw, 4.5rem);
       font-weight: 700;
       line-height: 1.1;
       color: var(--navy);
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
-      text-transform: uppercase;
+      text-transform: capitalize;
     }
 
     .hero h1 .highlight {
@@ -233,7 +232,7 @@
       transition: all 0.3s;
       border: 2px solid;
       cursor: pointer;
-      font-family: 'Space Mono', monospace;
+      font-family: 'Inter', sans-serif;
     }
 
     .btn-primary {
@@ -266,7 +265,7 @@
       bottom: 2rem;
       left: 50%;
       transform: translateX(-50%);
-      font-family: 'Space Mono', monospace;
+      font-family: 'Inter', sans-serif;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.15em;
@@ -293,7 +292,7 @@
     }
 
     .section-label {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.15em;
@@ -304,14 +303,14 @@
     }
 
     .section-title {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 700;
       color: var(--navy);
       letter-spacing: -0.02em;
       line-height: 1.1;
       margin-bottom: 1rem;
-      text-transform: uppercase;
+      text-transform: capitalize;
     }
 
     .section-title .highlight {
@@ -344,8 +343,15 @@
       border: 3px solid var(--navy);
       border-radius: 12px;
       padding: 2.5rem;
-      transition: all 0.3s;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .feature-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .feature-card:hover {
@@ -355,7 +361,7 @@
     }
 
     .feature-num {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Playfair Display', serif;
       font-size: 3rem;
       font-weight: 700;
       color: var(--blue);
@@ -370,13 +376,12 @@
     }
 
     .feature-card h3 {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--navy);
       margin-bottom: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
+      text-transform: capitalize;
     }
 
     .feature-card p {
@@ -397,10 +402,18 @@
       border-radius: 12px;
       padding: 2rem;
       text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .stat-box.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .stat-value {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
       font-weight: 700;
       color: var(--light-blue);
@@ -433,8 +446,15 @@
       padding: 2.5rem;
       display: flex;
       flex-direction: column;
-      transition: all 0.3s;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .service-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .service-card:hover {
@@ -469,7 +489,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      font-family: 'Space Mono', monospace;
+      font-family: 'Inter', sans-serif;
     }
 
     .service-icon {
@@ -479,7 +499,7 @@
     }
 
     .service-label {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Inter', sans-serif;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -489,13 +509,12 @@
     }
 
     .service-title {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.3rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--navy);
       margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
+      text-transform: capitalize;
     }
 
     .service-tagline {
@@ -547,7 +566,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-family: 'Space Mono', monospace;
+      font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.05em;
@@ -580,6 +599,14 @@
       border: 3px solid var(--blue);
       position: relative;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .cta-box.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .cta-box::before {
@@ -593,13 +620,13 @@
     }
 
     .cta-box h2 {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.1;
       margin-bottom: 1rem;
-      text-transform: uppercase;
+      text-transform: capitalize;
       position: relative;
       z-index: 1;
     }
@@ -682,7 +709,7 @@
     }
 
     .footer-tagline {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -779,23 +806,6 @@
       .cta-actions { flex-direction: column; align-items: center; }
       .btn { width: 100%; justify-content: center; }
     }
-
-    /* ─── ANIMATIONS ───────────────────────────────────────── */
-    .fade-in {
-      animation: fadeIn 0.6s ease-out forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
   </style>
 </head>
 <body>
@@ -842,25 +852,25 @@
       <p class="section-desc">Premium web design for businesses that demand excellence</p>
 
       <div class="features-grid">
-        <div class="feature-card fade-in">
+        <div class="feature-card">
           <div class="feature-num">01</div>
           <span class="feature-icon">🎨</span>
           <h3>Modern Design</h3>
           <p>Clean, contemporary websites that stand out. Every detail matters, from typography to spacing.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card">
           <div class="feature-num">02</div>
           <span class="feature-icon">⚡</span>
           <h3>Lightning Speed</h3>
           <p>Optimized for performance. Your site loads in milliseconds, keeping visitors engaged.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card">
           <div class="feature-num">03</div>
           <span class="feature-icon">📱</span>
           <h3>Mobile First</h3>
           <p>Perfect on every device. Responsive design that works flawlessly across all screen sizes.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card">
           <div class="feature-num">04</div>
           <span class="feature-icon">🎯</span>
           <h3>Results Driven</h3>
@@ -868,7 +878,7 @@
         </div>
       </div>
 
-      <div class="stats-grid fade-in">
+      <div class="stats-grid">
         <div class="stat-box">
           <div class="stat-value">100%</div>
           <div class="stat-label">Client Satisfaction</div>
@@ -893,7 +903,7 @@
       <p class="section-desc">Everything you need for a world-class website</p>
 
       <div class="services-grid">
-        <div class="service-card fade-in">
+        <div class="service-card">
           <span class="service-icon">🖌️</span>
           <span class="service-label">Design</span>
           <h3 class="service-title">Web Design</h3>
@@ -908,7 +918,7 @@
           <a href="#contact" class="service-link">Get Started →</a>
         </div>
 
-        <div class="service-card featured fade-in">
+        <div class="service-card featured">
           <div class="featured-badge">Most Popular</div>
           <span class="service-icon">💻</span>
           <span class="service-label">Development</span>
@@ -924,7 +934,7 @@
           <a href="#contact" class="service-link">Get Started →</a>
         </div>
 
-        <div class="service-card fade-in">
+        <div class="service-card">
           <span class="service-icon">🛠️</span>
           <span class="service-label">Support</span>
           <h3 class="service-title">Support</h3>
@@ -945,7 +955,7 @@
   <!-- ── CTA ───────────────────────────────────────────────── -->
   <section class="section cta-section" id="contact">
     <div class="container">
-      <div class="cta-box fade-in">
+      <div class="cta-box">
         <span class="section-label" style="color: var(--light-blue); margin-bottom: 1rem;">Get In Touch</span>
         <h2>Ready to Level Up?</h2>
         <p>Let's build a website that brings <strong>real value</strong> to your business. No fluff, just results.</p>
@@ -999,26 +1009,33 @@
       a.addEventListener('click', () => links.classList.remove('open'));
     });
 
-    // Fade-in animation on scroll
+    // Smooth scroll-triggered animations
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.15,
+      rootMargin: '0px 0px -80px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }, i * 100);
+          entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-in').forEach(el => {
+    // Observe all animated elements
+    document.querySelectorAll('.feature-card, .stat-box, .service-card, .cta-box').forEach(el => {
       observer.observe(el);
+    });
+
+    // Stagger animation for grid items
+    const gridContainers = document.querySelectorAll('.features-grid, .services-grid, .stats-grid');
+    gridContainers.forEach(grid => {
+      const items = grid.querySelectorAll('[class*="card"], [class*="box"]');
+      items.forEach((item, index) => {
+        item.style.transitionDelay = `${index * 0.1}s`;
+      });
     });
   </script>
 </body>
