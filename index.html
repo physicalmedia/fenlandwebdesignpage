@@ -326,6 +326,18 @@
       line-height: 1.7;
     }
 
+    /* ─── ANIMATIONS ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ─── WHY US ──────────────────────────────────────────── */
     .why-section {
       background: var(--cream);
@@ -345,13 +357,6 @@
       padding: 2.5rem;
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .feature-card.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     .feature-card:hover {
@@ -402,14 +407,7 @@
       border-radius: 12px;
       padding: 2rem;
       text-align: center;
-      opacity: 0;
-      transform: translateY(30px);
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .stat-box.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     .stat-value {
@@ -448,13 +446,6 @@
       flex-direction: column;
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .service-card.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     .service-card:hover {
@@ -599,14 +590,7 @@
       border: 3px solid var(--blue);
       position: relative;
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .cta-box.visible {
-      opacity: 1;
-      transform: translateY(0);
+      transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
     }
 
     .cta-box::before {
@@ -705,7 +689,10 @@
     .footer-logo-wrap img {
       height: 60px;
       width: auto;
-      filter: brightness(0) invert(1) opacity(0.9);
+      /* Ensure logo is white on dark background */
+      filter: brightness(0) invert(1);
+      display: block;
+      background: transparent;
     }
 
     .footer-tagline {
@@ -831,12 +818,12 @@
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Build Something <span class="highlight">Amazing</span></h1>
-      <p class="hero-sub">
+      <h1 class="reveal">Build Something <span class="highlight">Amazing</span></h1>
+      <p class="hero-sub reveal">
         Websites done easy. <strong>Simple. Fast. Reliable.</strong><br>
         Premium web design for businesses that demand excellence.
       </p>
-      <div class="hero-actions">
+      <div class="hero-actions reveal">
         <a href="#contact" class="btn btn-primary">Let's Build Together</a>
         <a href="#about" class="btn btn-secondary">Learn More</a>
       </div>
@@ -847,30 +834,30 @@
   <!-- ── WHY US ────────────────────────────────────────────── -->
   <section class="section why-section" id="about">
     <div class="container">
-      <span class="section-label">Why Us</span>
-      <h2 class="section-title">Why Choose <span class="highlight">Fenland</span></h2>
-      <p class="section-desc">Premium web design for businesses that demand excellence</p>
+      <span class="section-label reveal">Why Us</span>
+      <h2 class="section-title reveal">Why Choose <span class="highlight">Fenland</span></h2>
+      <p class="section-desc reveal">Premium web design for businesses that demand excellence</p>
 
       <div class="features-grid">
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-num">01</div>
           <span class="feature-icon">🎨</span>
           <h3>Modern Design</h3>
           <p>Clean, contemporary websites that stand out. Every detail matters, from typography to spacing.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-num">02</div>
           <span class="feature-icon">⚡</span>
           <h3>Lightning Speed</h3>
           <p>Optimized for performance. Your site loads in milliseconds, keeping visitors engaged.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-num">03</div>
           <span class="feature-icon">📱</span>
           <h3>Mobile First</h3>
           <p>Perfect on every device. Responsive design that works flawlessly across all screen sizes.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-num">04</div>
           <span class="feature-icon">🎯</span>
           <h3>Results Driven</h3>
@@ -879,15 +866,15 @@
       </div>
 
       <div class="stats-grid">
-        <div class="stat-box">
+        <div class="stat-box reveal">
           <div class="stat-value">100%</div>
           <div class="stat-label">Client Satisfaction</div>
         </div>
-        <div class="stat-box">
+        <div class="stat-box reveal">
           <div class="stat-value">3 Day</div>
           <div class="stat-label">Avg. Turnaround</div>
         </div>
-        <div class="stat-box">
+        <div class="stat-box reveal">
           <div class="stat-value">£0</div>
           <div class="stat-label">Hidden Fees</div>
         </div>
@@ -898,12 +885,12 @@
   <!-- ── SERVICES ──────────────────────────────────────────── -->
   <section class="section services-section" id="services">
     <div class="container">
-      <span class="section-label">What We Offer</span>
-      <h2 class="section-title">Our <span class="highlight">Services</span></h2>
-      <p class="section-desc">Everything you need for a world-class website</p>
+      <span class="section-label reveal">What We Offer</span>
+      <h2 class="section-title reveal">Our <span class="highlight">Services</span></h2>
+      <p class="section-desc reveal">Everything you need for a world-class website</p>
 
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card reveal">
           <span class="service-icon">🖌️</span>
           <span class="service-label">Design</span>
           <h3 class="service-title">Web Design</h3>
@@ -918,7 +905,7 @@
           <a href="#contact" class="service-link">Get Started →</a>
         </div>
 
-        <div class="service-card featured">
+        <div class="service-card featured reveal">
           <div class="featured-badge">Most Popular</div>
           <span class="service-icon">💻</span>
           <span class="service-label">Development</span>
@@ -934,7 +921,7 @@
           <a href="#contact" class="service-link">Get Started →</a>
         </div>
 
-        <div class="service-card">
+        <div class="service-card reveal">
           <span class="service-icon">🛠️</span>
           <span class="service-label">Support</span>
           <h3 class="service-title">Support</h3>
@@ -955,7 +942,7 @@
   <!-- ── CTA ───────────────────────────────────────────────── -->
   <section class="section cta-section" id="contact">
     <div class="container">
-      <div class="cta-box">
+      <div class="cta-box reveal">
         <span class="section-label" style="color: var(--light-blue); margin-bottom: 1rem;">Get In Touch</span>
         <h2>Ready to Level Up?</h2>
         <p>Let's build a website that brings <strong>real value</strong> to your business. No fluff, just results.</p>
@@ -976,7 +963,8 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-logo-wrap">
-        <img src="logo_white.png" alt="Fenland Web Design" />
+        <!-- Using logo.png with filter for perfect inversion -->
+        <img src="logo.png" alt="Fenland Web Design" />
         <span class="footer-tagline">Simple Websites. Real Results.</span>
       </div>
 
@@ -1009,33 +997,59 @@
       a.addEventListener('click', () => links.classList.remove('open'));
     });
 
-    // Smooth scroll-triggered animations
+    // Intersection Observer for scroll animations
     const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -80px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+          
+          // Check for grids and stagger children
+          const grids = ['.features-grid', '.services-grid', '.stats-grid'];
+          grids.forEach(selector => {
+            if (entry.target.closest(selector)) {
+              // Item is inside a grid, let the grid handle it or just reveal it
+              entry.target.classList.add('visible');
+            }
+          });
         }
       });
     }, observerOptions);
 
-    // Observe all animated elements
-    document.querySelectorAll('.feature-card, .stat-box, .service-card, .cta-box').forEach(el => {
+    // Observe all elements with 'reveal' class
+    document.querySelectorAll('.reveal').forEach(el => {
       observer.observe(el);
     });
 
-    // Stagger animation for grid items
-    const gridContainers = document.querySelectorAll('.features-grid, .services-grid, .stats-grid');
-    gridContainers.forEach(grid => {
-      const items = grid.querySelectorAll('[class*="card"], [class*="box"]');
-      items.forEach((item, index) => {
-        item.style.transitionDelay = `${index * 0.1}s`;
+    // Handle staggered grid reveals separately for better control
+    const grids = document.querySelectorAll('.features-grid, .services-grid, .stats-grid');
+    const gridObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const children = entry.target.querySelectorAll('.reveal');
+          children.forEach((child, i) => {
+            setTimeout(() => {
+              child.classList.add('visible');
+            }, i * 150);
+          });
+          gridObserver.unobserve(entry.target);
+        }
       });
+    }, { threshold: 0.1 });
+
+    grids.forEach(grid => gridObserver.observe(grid));
+
+    // Immediate reveal for hero elements
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 200);
+        });
+      }, 300);
     });
   </script>
 </body>
